@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>装饰(修改依赖)</title>
+		<script src="js/angular.js"></script>
+	</head>
+	<body ng-controller="con">
+		<script>
+			angular.module('test',[]).controller('con',function($scope,aa,bb){
+				alert(bb);
+			}).constant('aa',11).value('bb',25).decorator('bb',function($delegate){
+				return $delegate+1;
+			});
+		</script>
+	</body>
+</html>

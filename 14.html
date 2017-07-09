@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>Angular选项卡</title>
+		<style>
+			#box div
+			{
+				height: 200px;
+				width: 200px;
+				background: #ccc;
+			}
+			input.active
+			{
+				background: yellow;
+			}
+		</style>
+		<script src="js/angular.js"></script>
+		<script>
+			var app=angular.module('test',[]);
+			app.controller('con',function($scope){
+				$scope.now=0;
+				$scope.arr=[
+				{name:'xxx',content:'爱我吗'},
+				{name:'aaa',content:'来来阿里'},
+				{name:'bbb',content:'我是杰伦'}];
+				$scope.fn=function(n)
+				{
+					$scope.now=n;
+				};
+			});
+			//一个页面可以有多个模块，一个模块可以有多个作用域
+			//支持多维，随便循环
+		</script>
+	</head>
+	<body>
+		<div id="box" ng-controller="con">
+			<input type="button" value={{json.name}} ng-repeat="json in arr" title="{{$index}}" 
+				class="{{now==$index?'active':''}}" ng-click="fn($index)"/>
+			<div ng-repeat="json in arr" ng-show="now=={{$index}}">{{json.content}}</div>
+		</div>
+	</body>
+</html>

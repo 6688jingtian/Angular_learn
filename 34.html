@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义依赖(常量变量)</title>
+		<script src="js/angular.js"></script>
+	</head>
+	<body ng-controller="con">
+		<script>
+			angular.module('test',[]).controller('con',function($scope,aa,bb){
+				alert(aa);
+				alert(bb);
+			}).constant('aa',11).value('bb',22);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>延迟加载</title>
+		<script src="js/angular.js"></script>
+		<script src="js/angular-route.js"></script>
+		<script src="js/article.js"></script>
+		<script src="js/user.js"></script>
+		<script>
+			var app=angular.module('test',['ngRoute','art','use']);
+			app.controller('con',function($scope,$route){
+				//console.log(new Date().getTime());
+			});
+			app.config(function($routeProvider){//配置 不用名字
+				$routeProvider.when('/article',
+				{
+					templateUrl:'view/article.html',
+					controller:'article'
+				}).when('/user', 
+				{
+					templateUrl:'view/user.html',
+					controller:'user',
+					resolve:{//resolve参数用promise方式实现页面延迟加载
+						delay:function($q){
+						var delay=$q.defer();
+						setTimeout(function(){
+							delay.resolve();
+						},3000);
+						return delay.promise;//promise请求序列化ajax jsonp
+						} 
+					}
+				}).when('/more',
+				{
+					template:'<h1>一统江湖</h1>'
+				});
+			});  
+            //引入Route 1.引入文件    2.引入模块
+		</script>
+	</head>
+	<body ng-controller="con">  
+		<a href="#/article">文章列表</a>
+		<a href="#/user">用户中心</a>
+		<a href="#/more">更多消息</a>
+        <ng-view></ng-view><!--占位符必须得有-->
+	</body>
+</html>

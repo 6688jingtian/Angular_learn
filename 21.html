@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>指令(自定义组件)</title>
+		<script src="js/angular.js"></script>
+		<script>
+			var app=angular.module('test',[]);
+			app.directive('abc',function(){//指令
+				var json=
+				{
+					restrict:'M',//约束
+					template:'<span>zhoujielun</span>',//模板
+					replace:true
+				};
+				return json;
+			});
+			//E(element)标签    C(class)  A(attribute)  M(comment)注释必须加replace 注释左右都必须有空格
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<!--directive:abc-->
+	</body>
+</html>

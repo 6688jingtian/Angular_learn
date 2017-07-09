@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>添加小叉(包裹)</title>
+		<script src="js/angular.js"></script>
+	</head>
+	<body>
+		<ul>
+			<li myclose>我是周杰伦</li>
+			<li myclose>我是周杰伦</li>
+			<li>我是周杰伦</li>
+			
+		</ul>
+		<script>
+			var app=angular.module('test',[]);
+			app.directive('myclose',function(){
+				var json={
+					restrict:'A',
+					template:'<a href="javascript:;">3.1415926</a><ng-transclude></ng-transclude>',
+					transclude:true//包裹 嵌入
+				};
+				return json;
+			});
+		</script>
+	</body>
+</html>

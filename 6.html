@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/angular.js"></script>
+	</head>
+	<body>
+		<ul ng-controller="con">
+			<li ng-repeat="i in item">
+				<h3>名字：{{i.name}}</h3>
+				<p>价格：{{i.price|currency}}</p>
+				<p>时间：{{i.time|date:'yyyy年MM月dd日 HH时mm分ss秒'}}</p>
+				<!--currency为过滤器（货币）-->
+			</li>
+		</ul>
+		<script>
+			var app=angular.module('test',[]);
+			app.controller('con',function($scope){
+				$scope.item=[
+				//时间戳
+				{name:'赵四皮裤',price:1500,time:1498393195461},
+				{name:'刘能小帽',price:20,time:1498393291111},
+				{name:'广坤头套',price:30000,time:1498393291111}]
+			});
+			
+			
+		</script>
+	</body>
+</html>

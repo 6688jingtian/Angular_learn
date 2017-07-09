@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义依赖注入(service服务 类似于构造函数)</title>
+		<script src="js/angular.js"></script>
+		<script>
+			angular.module('test',[]).controller('con',function($scope,myser){
+				alert(myser.c);
+			}).service('myser',function(){
+				this.c=25;
+//					return {
+//						a:12,
+//						b:10
+//					};
+			});
+		</script>
+	</head>
+	<body ng-controller="con">
+		<div></div>
+	</body>
+</html>

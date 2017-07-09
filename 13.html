@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="">
+	<head>
+		<meta charset="UTF-8">
+		<title>选项卡</title>
+		<style>
+			#box div
+			{
+				height: 200px;
+				width: 200px;
+				background: #ccc;
+			}
+			input.active
+			{
+				background: yellow;
+			}
+		</style>
+		<script src="js/angular.js"></script>
+	</head>
+	<body>
+		<div id="box" ng-init="now=0">
+			<input type="button" value="1" class="{{now==0?'active':''}}" ng-click="now=0"/>
+			<input type="button" value="2" class="{{now==1?'active':''}}" ng-click="now=1"/>
+			<input type="button" value="3" class="{{now==2?'active':''}}" ng-click="now=2"/>
+			<div ng-show="now==0">赵四</div>
+			<div ng-show="now==1">刘能</div>
+			<div ng-show="now==2">广坤叔</div>
+		</div>
+	</body>
+</html>

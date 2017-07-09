@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>Route事件(仿ajax异步)</title>
+		<script src="js/angular.js"></script>
+		<script src="js/angular-route.js"></script>
+		<script src="js/article.js"></script>
+		<script src="js/user.js"></script>
+		<script>
+			var app=angular.module('test',['ngRoute','art','use']);
+			app.controller('con',function($scope,$route){
+				//console.log(new Date().getTime());
+				$scope.loading=false;
+				$scope.$on('$routeChangeStart',function(){
+					alert('加载开始');
+					$scope.loading=true;
+				});
+				$scope.$on('$routeChangeSuccess',function(){
+					$scope.loading=false;
+				});
+				$scope.$on('$routeChangeError',function(){
+					alert('加载失败');
+					$scope.loading=false;
+				});
+			});
+			app.config(function($routeProvider){//配置 不用名字
+				$routeProvider.when('/article',
+				{
+					templateUrl:'view/article.html',
+					controller:'article'
+				}).when('/user', 
+				{
+					templateUrl:'view/user.html',
+					controller:'user'
+				}).when('/more',
+				{
+					templateUrl:'more.html'
+				});
+			});  
+            //引入Route 1.引入文件    2.引入模块
+		</script>
+		<script type="text/ng-template" id="more.html">
+			<ul>
+				<li>
+					日出东方，唯我不败。
+				</li>
+			</ul>
+		</script>
+	</head>
+	<body ng-controller="con">  
+		<div ng-show="loading">正在加载...</div>
+		<a href="#/article">文章列表</a>
+		<a href="#/user?type=hot">热门新闻</a>
+		<a href="#/user?type=sexy">sexy新闻</a>
+		<a href="#/user?type=game">游戏新闻</a>
+		<a href="#/more">更多消息</a>
+        <ng-view></ng-view><!--占位符必须得有-->
+	</body>

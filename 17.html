@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>(filter)过滤器</title>
+		<!--输出之前处理一下-->
+		<script src="js/angular.js"></script>
+	</head>
+	<body ng-controller="con">
+		<div ng-repeat="i in arr">{{i|currency}}</div>
+		<div>{{a|date:'yyyy年MM月dd日 HH时mm分ss秒'}}</div>
+		<script>
+			var app=angular.module('test',[]);
+			app.controller('con',function($scope){
+				$scope.a=1498721282514;
+				$scope.arr=[12.2,23.56,445];
+			})
+		</script>
+		<!--UI自动更新-->
+	</body>
+</html>

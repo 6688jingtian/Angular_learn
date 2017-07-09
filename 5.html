@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/angular.js"></script>
+	</head>
+	<body>
+		<div ng-controller="zhangsan">
+			<span>{{a}}</span>
+		</div>
+		<!--<div ng-controller="con">
+		<input type="text" ng-model="str"/>
+		<input type="submit" ng-click="alert(str)"/>
+		</div>-->
+		<script>
+			//双向绑定，可进也可出
+			//普通函数：由调用方决定参数
+			//ng函数：由定义方决定参数
+			//一个页面可以有多个模块，一个模块可以有多个作用域
+			var app=angular.module('test',[]);//模块化
+			app.controller('zhangsan',['$scope',function(a){//scope作用域 依赖注入使得名字不可乱取
+				a.a=12;
+			}]);
+			//依赖注入使名字不可以乱取
+//          var app=angular.module('test',[]);//模块化
+//			app.controller('con',function(){//桥梁 放js代码
+//				//$scope.alert=function(){
+//					window.alert(s);
+//                  alert(arguments.length);
+//				//}
+//			})
+		</script>
+	</body>
+</html>

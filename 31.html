@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义依赖注入(factory方法)最简单  注入可以是1.数字 2.函数 3.json</title>
+		<script src="js/angular.js"></script>
+	</head>
+	<body>
+		<div ng-controller="con">{{a}}</div>
+		<script>
+			angular.module('test',[]).controller('con',function($scope,num){
+				$scope.a=10;
+				alert(num(12,28)); 
+			}).factory('num',function(){
+					return function(n1,n2){
+						return n1+n2;
+				}
+			});   
+			//方法一factory()
+			//方法二provide()
+		</script>
+	</body>
+</html>

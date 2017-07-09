@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义依赖注入(factory方法)</title>
+		<script src="js/angular.js"></script>
+	</head>
+	<body>
+		<div ng-controller="con">{{a}}</div>
+		<script>
+			angular.module('test',[]).controller('con',function($scope,$interval){
+				$scope.a=10;
+				$interval(function(){$scope.a++},100);
+			});   
+			//方法一factory()
+			//方法二provide()
+		</script>
+	</body>
+</html>

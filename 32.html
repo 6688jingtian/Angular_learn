@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义依赖注入(provider 功能强大)</title>
+		<script src="js/angular.js"></script>
+		<script>
+			angular.module('test',[]).controller('con',function($scope,mypro){
+				alert(mypro.a);
+			}).provider('mypro',function(){
+				this.$get=function(){//this联系上下文
+					return {
+						a:12,
+						b:10
+					};
+				};
+			});
+		</script>
+	</head>
+	<body ng-controller="con">
+		<div></div>
+	</body>
+</html>

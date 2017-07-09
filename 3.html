@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="">
+	<head>
+		<meta charset="UTF-8">
+		<title>模板</title>
+		<script src="js/angular.js"></script>
+	</head>
+	<body>
+		<!--
+			angular真言
+			1.angular与原生js不互通，不能互用(函数不互通，变量不互通，事件不互通)
+			2.在angular中开发模式与传统开发模式完全不同，只需盯住数据，数据为中心
+		-->
+		<input type="text" ng-model='a' />
+		<!--angular 接管了UI 把数据 表现 业务逻辑分离开-->
+		<input type="submit" ng-click="a=a+1"/>
+		<!--双向绑定，依赖注入-->
+	</body>
+</html>

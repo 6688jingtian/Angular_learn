@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>过滤器</title>
+		<script src="js/angular.js"></script>
+	</head>
+	<body ng-controller="con">
+		<div ng-repeat="i in arr">姓名：{{i.name}} 分数：{{i.score}} 价钱：{{i.price|myfilter}}</div>
+		<script>
+			var app=angular.module('test',[]);
+			app.filter('myfilter',function(){
+				return function(input){
+					if(input<0)
+					{
+						return '('+(-input)+')';
+					}
+					else
+					{
+						return input;
+					}
+				};
+			});
+			app.controller('con',function($scope){
+				$scope.arr=[{name:'赵四',score:15,price:-30000}
+				,{name:'刘能',score:30,price:-50000},
+				{name:'广坤',score:99,price:1000000}];
+			});
+		</script>
+	</body>
+</html>

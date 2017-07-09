@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>数据共享</title>
+		<script src="js/angular.js"></script>
+		<script>
+		    var app=angular.module('test',[]);
+		    app.provider('mypro',function(){
+		    	this.$get=function(){
+		    		return{
+		    			a:12,
+		    			b:56
+		    		}
+		    	}
+		    });
+			app.controller('con1',function($scope,mypro){
+				alert('我执行了');
+				alert(mypro.a);
+			});
+			app.controller('con2',function($scope,mypro){
+				mypro.a=15;
+				alert(mypro.a);
+			});
+			app.controller('con3',function($scope,mypro){
+				mypro.a=15;
+				alert(mypro.a);
+			});
+		</script>
+	</head> 
+	<body>
+		<div ng-controller="con1"></div>
+		<div ng-controller="con2"></div>
+		<div ng-controller="con3"></div>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/angular.js"></script>
+		<script>
+			var app=angular.module('test',[]);
+			app.controller('con',function($scope){
+				$scope.arr=['apple','banana','orange','hello','love'];
+			});
+			app.directive('mydir',function(){
+				return {
+					restrict:'E',
+					template:
+					'<input type="text" ng-model="str"/>\
+					<ng-transclude></ng-transclude>\
+					<ul>\
+					<li ng-repeat="i in arr" >{{i}},{{i.indexOf(str)!=-1}}</li>\
+					</ul>', 
+				    transclude:true
+				    //transclude保证原指令标签内的元素保存再把模板插入(嵌入)
+				};
+			}); 
+		</script>
+	</head>
+	<body ng-controller="con">
+		<mydir>
+			嵌入(ng-transclude)
+		</mydir>
+	</body>
+</html>

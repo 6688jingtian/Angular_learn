@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>监视watch()</title>
+		<script src="js/angular.js"></script>
+	</head>
+	<body ng-controller="con">
+		<input type="submit" ng-click="arr.push(99);" value="添加"/>
+		{{arr}}
+		<script>
+			//深度监视(监视内容)
+			var app=angular.module('test',[]);
+			app.controller('con',function($scope){
+				$scope.arr=[12,23,56];
+				$scope.$watch('arr',function(){
+					alert('变了');
+				},true);
+			});
+		</script>
+	</body>
+</html>

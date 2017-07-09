@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html ng-app="">
+	<head>
+		<meta charset="UTF-8">
+		<title>显示隐藏</title>
+		<script src="js/angular.js"></script>
+	</head>
+	<body ng-init="mshow=true;">
+	     <input type="submit" value="显示隐藏" ng-click="mshow=!mshow" />
+	     <div style="height: 200px; width: 200px; background: yellow;" ng-show="mshow"></div>
+	<!--{{经常放表达式}}-->
+	<!--ng-repeat ng-click在一起就出问题-->
+	</body>
+</html>

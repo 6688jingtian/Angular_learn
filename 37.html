@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>数据共享(多个controller之间)</title>
+		<script src="js/angular.js"></script>
+		<script>
+			var app=angular.module('test',[]);
+			app.controller('con1',function($scope){
+				$scope.fn=function(){
+					$scope.$broadcast('wen',{a:12,b:6});
+				};
+			});
+			app.controller('con2',function($scope){
+				$scope.$on('wen',function(event,data){//event事件对象 data数据
+					alert('我接到事件了');
+					console.log(data);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div ng-controller="con1">
+			<input type="submit" value="触发事件" ng-click="fn()"/><!--父级先创建-->
+			<div ng-controller="con2"></div><!--子集后创建-->
+		</div>
+		<!--
+			1.父子controller
+			$scope能继承--复制了$scope
+			不能叫同步，只是是复制
+			
+			消息机制(事件)：
+			$scope.$emit('名字',数据); 自己+父级 向上传送 发送
+			$scope.$broadcast('名字',数据); 自己+子集 向下传送 发送
+			$scope.$on('名字',数据); 接收
+			
+			2.无关controller
+			用自定义依赖来存储数据 service factory provider  创建的依赖只有一个
+		-->
+	</body>
+</html>

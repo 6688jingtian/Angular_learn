@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>模块继承</title>
+		<!--1.按需加载 动态加载 2.封装隔离 3.依赖-->
+		<script src="js/angular.js"></script>
+		<script>
+			angular.module('mod1',[]).controller('con1',function($scope){
+				$scope.a=10;
+			}).filter('myfil1',function(){
+				return function(input)
+				{
+					return input+20;
+				};
+			});
+			angular.module('mod2',[]).controller('con2',function($scope){
+				$scope.b=20;
+			}).filter('myfil1',function(){
+				return function(input)
+				{
+					return input+'abc';
+				};
+			});
+			angular.module('mod3',['mod1','mod2']);
+		</script>
+	</head>
+	<body ng-app="mod3">
+		<div ng-controller="con1">
+			{{a|myfil1}}
+		</div>
+		<div ng-controller="con2">
+			{{b|myfil1}}
+		</div>
+	</body>
+</html>

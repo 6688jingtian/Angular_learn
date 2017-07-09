@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>仿百度下拉菜单(可重用组件)</title>
+		<script src="js/angular.js"></script>
+		<script>
+			angular.module('test',[]).controller('con',function($scope){
+				$scope.arr=['apple','banana','orange','hello','love'];
+				$scope.str='';
+			}).directive('mydir',function(){
+				return {
+					restrict:'ECMA',
+					template:
+					'<input type="text" ng-model="str"/>\
+					<ul>\
+					<li ng-repeat="i in arr" ng-show="i.indexOf(str)!=-1">{{i}}</li>\
+					</ul>', 
+				    transclude:true
+				    //transclude保证原指令标签内的元素保存再把模板插入(嵌入)
+				    //1.创建了一堆元素
+				    //2.可重用
+				};
+			}); 
+		</script>
+	</head>
+	<body ng-controller="con">
+		<mydir>
+		</mydir>
+	</body>
+</html>

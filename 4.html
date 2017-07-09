@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html ng-app="">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/angular.js"></script>
+	</head>
+	<body>
+	     <ul ng-init="json={a:'abd',b:12,c:5}">
+	         <li ng-repeat="(index,value) in json">{{index}}={{value}}</li>
+	     </ul>
+	</body>
+</html>

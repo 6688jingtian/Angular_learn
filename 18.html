@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>过滤器</title>
+		<script src="js/angular.js"></script>
+	</head>
+	<body ng-controller="con">
+		<div ng-repeat="i in arr">{{i|myfilter}}</div>
+		<script>
+			var app=angular.module('test',[]);
+			app.filter('myfilter',function(){
+				return function(input){
+					return input+5;
+				};
+			});
+			app.controller('con',function($scope){
+				$scope.arr=[12,23,45];
+			});
+		</script>
+	</body>
+</html>
